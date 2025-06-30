@@ -1,7 +1,68 @@
-import React, { useState } from 'react';
-import { Search, Moon, Sun, ChefHat } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Search, Moon, Sun, ChefHat, Star, Heart, ShoppingCart } from 'lucide-react';
 
-// ... menuData ve categories aynı şekilde kalıyor ...
+const menuData = {
+  Kuzu: [
+    { id: 1, name: "Kuzu beyti", price: "140 TL", desc: "Izgara kuzu etinden hazırlanmış lezzetli beyti kebap.", img: "", rating: 4.8, popular: true },
+    { id: 2, name: "Kuzu pirzola", price: "160 TL", desc: "Izgara kuzu pirzola, baharatlı ve yumuşak.", img: "", rating: 4.9, popular: true },
+    { id: 3, name: "Kuzu kaburga", price: "170 TL", desc: "Fırında pişirilmiş kuzu kaburga, enfes soslarla.", img: "", rating: 4.7 },
+    { id: 4, name: "Kuzu külbastı", price: "150 TL", desc: "Izgara kuzu külbastı, özel marinasyonlu.", img: "", rating: 4.6 },
+    { id: 5, name: "Kuzu kavurma", price: "135 TL", desc: "Kuzu etinden kavurma, geleneksel lezzet.", img: "", rating: 4.5 },
+    { id: 6, name: "Kuzu böbrek", price: "120 TL", desc: "Taze kuzu böbrek, baharatlı pişirilmiş.", img: "", rating: 4.3 },
+    { id: 7, name: "Kuzu lokum", price: "155 TL", desc: "Özel kuzu lokumu, ağızda eriyen lezzet.", img: "", rating: 4.8 },
+  ],
+  Dana: [
+    { id: 8, name: "Dana kavurma", price: "130 TL", desc: "Dana etinden kavurma, klasik tat.", img: "", rating: 4.4 },
+    { id: 9, name: "Dana antrikot", price: "175 TL", desc: "Izgara dana antrikot, yumuşak ve sulu.", img: "", rating: 4.7, popular: true },
+    { id: 10, name: "Dana biftek", price: "180 TL", desc: "Dana biftek, özel marine ile.", img: "", rating: 4.8 },
+    { id: 11, name: "Dana pirzola", price: "160 TL", desc: "Izgara dana pirzola, baharatlarla tatlandırılmış.", img: "", rating: 4.6 },
+    { id: 12, name: "Dana lokum", price: "155 TL", desc: "Dana lokum, özenle hazırlanmış.", img: "", rating: 4.5 },
+    { id: 13, name: "Dana şiş soslu", price: "140 TL", desc: "Sosu ile servis edilen dana şiş.", img: "", rating: 4.6 },
+    { id: 14, name: "Dana şiş sossuz", price: "130 TL", desc: "Sossuz klasik dana şiş.", img: "", rating: 4.4 },
+    { id: 15, name: "Dana beyti", price: "145 TL", desc: "Dana etinden hazırlanmış beyti kebap.", img: "", rating: 4.7 },
+    { id: 16, name: "Dana soslu antrikot", price: "185 TL", desc: "Soslu dana antrikot, özel sos ile.", img: "", rating: 4.8, popular: true },
+    { id: 17, name: "Yaprak ciğer", price: "120 TL", desc: "Taze yaprak ciğer, baharatlı.", img: "", rating: 4.2 },
+    { id: 18, name: "Ciğer şiş", price: "130 TL", desc: "Izgara ciğer şiş, lezzet garantili.", img: "", rating: 4.3 },
+    { id: 19, name: "Dana böbrek", price: "125 TL", desc: "Dana böbrek, baharatlı pişmiş.", img: "", rating: 4.1 },
+  ],
+  Tavuk: [
+    { id: 20, name: "Tavuk kanat", price: "90 TL", desc: "Izgara tavuk kanat, baharatlı.", img: "", rating: 4.5 },
+    { id: 21, name: "Tavuk şiş", price: "95 TL", desc: "Izgara tavuk şiş, yumuşak ve lezzetli.", img: "", rating: 4.6, popular: true },
+    { id: 22, name: "Tavuk ızgara karışık", price: "110 TL", desc: "Çeşitli tavuk ızgara parçaları.", img: "", rating: 4.4 },
+    { id: 23, name: "Tavuk kelebek", price: "100 TL", desc: "Izgara tavuk kelebek, özel soslu.", img: "", rating: 4.5 },
+  ],
+  Adana: [
+    { id: 24, name: "Adana porsiyon", price: "130 TL", desc: "Baharatlı Adana kebap porsiyon.", img: "", rating: 4.7, popular: true },
+    { id: 25, name: "Adana dürüm", price: "120 TL", desc: "Lezzetli Adana kebap dürüm.", img: "", rating: 4.6 },
+  ],
+  Salata: [
+    { id: 26, name: "Kaşık salata", price: "30 TL", desc: "Taze sebzelerle hazırlanmış kaşık salata.", img: "", rating: 4.3 },
+    { id: 27, name: "Sezar salata", price: "40 TL", desc: "Klasik sezar salata, çıtır kruton ile.", img: "", rating: 4.5 },
+    { id: 28, name: "Mevsim salata", price: "35 TL", desc: "Mevsim yeşillikleri ve sebzeleri.", img: "", rating: 4.4 },
+    { id: 29, name: "Söğüş", price: "28 TL", desc: "Soğuk mevsim sebzeleri ile hazırlanmış.", img: "", rating: 4.2 },
+  ],
+  Tatlılar: [
+    { id: 30, name: "Kabak tatlısı", price: "40 TL", desc: "Tatlı balkabağından hazırlanan geleneksel tatlı.", img: "", rating: 4.6 },
+    { id: 31, name: "Kazan dibi", price: "35 TL", desc: "Kıvamlı ve hafif kazanda pişirilmiş tatlı.", img: "", rating: 4.5 },
+    { id: 32, name: "Şambali", price: "30 TL", desc: "İrmik tatlısı, şerbetli ve lezzetli.", img: "", rating: 4.4 },
+    { id: 33, name: "Kemalpaşa", price: "30 TL", desc: "Peynir tatlısı, şerbetli ve yumuşak.", img: "", rating: 4.3 },
+    { id: 34, name: "Katmer", price: "50 TL", desc: "Fıstık ve kaymak ile yapılan çıtır tatlı.", img: "", rating: 4.8, popular: true },
+    { id: 35, name: "Soğuk baklava", price: "55 TL", desc: "Buz gibi servis edilen baklava.", img: "", rating: 4.7 },
+    { id: 36, name: "Fıstıklı baklava", price: "60 TL", desc: "Taze fıstıkla yapılmış baklava.", img: "", rating: 4.9, popular: true },
+    { id: 37, name: "Cevizli baklava", price: "60 TL", desc: "Cevizli baklava, özel tarif.", img: "", rating: 4.8 },
+  ],
+  Mezeler: [
+    { id: 38, name: "Haydari", price: "30 TL", desc: "Yoğurt ve sarımsakla hazırlanmış klasik meze.", img: "", rating: 4.5 },
+    { id: 39, name: "Mantar turşusu", price: "32 TL", desc: "Baharatlı mantar turşusu, nefis bir başlangıç.", img: "", rating: 4.4 },
+    { id: 40, name: "Acılı ezme", price: "28 TL", desc: "Domates, biber ve baharatlarla acılı ezme.", img: "", rating: 4.6, popular: true },
+    { id: 41, name: "Rus salatası", price: "35 TL", desc: "Bezelye, havuç ve mayonezli karışım.", img: "", rating: 4.3 },
+    { id: 42, name: "Havuç tarator", price: "30 TL", desc: "Yoğurtlu ve sarımsaklı rendelenmiş havuç mezesidir.", img: "", rating: 4.4 },
+    { id: 43, name: "Acılı Atom", price: "33 TL", desc: "Biberli, sarımsaklı yoğurt ile servis edilen acı atom.", img: "", rating: 4.5 },
+    { id: 44, name: "Peynir mezeleri", price: "40 TL", desc: "Karışık peynir tabağı meze.", img: "", rating: 4.4 },
+  ],
+};
+
+const categories = Object.keys(menuData).filter(category => menuData[category].length > 0);
 
 export default function RestaurantMenu() {
   const [activeCategory, setActiveCategory] = useState(categories[0]);
@@ -12,7 +73,10 @@ export default function RestaurantMenu() {
     setDarkMode(!darkMode);
   };
 
-  // ... filteredProducts aynı şekilde kalıyor ...
+  const filteredProducts = menuData[activeCategory]?.filter(item =>
+    item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    item.desc.toLowerCase().includes(searchTerm.toLowerCase())
+  ) || [];
 
   return (
     <div className={`min-h-screen transition-all duration-300 ${
