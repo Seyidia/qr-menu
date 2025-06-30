@@ -60,6 +60,12 @@ const menuData = {
     { id: 43, name: "Acılı Atom", price: "33 TL", desc: "Biberli, sarımsaklı yoğurt ile servis edilen acı atom.", img: "", rating: 4.5 },
     { id: 44, name: "Peynir mezeleri", price: "40 TL", desc: "Karışık peynir tabağı meze.", img: "", rating: 4.4 },
   ],
+    Dondurma: [
+    { id: 45, name: "Sade Dondurma", price: "25 TL", desc: "Klasik sade dondurma.", img: "", rating: 4.5 },
+    { id: 46, name: "Çikolatalı Dondurma", price: "30 TL", desc: "Bol çikolatalı enfes dondurma.", img: "", rating: 4.7 },
+    { id: 47, name: "Limonlu Dondurma", price: "28 TL", desc: "Ferahlatıcı limon aromalı dondurma.", img: "", rating: 4.6 },
+    { id: 48, name: "Böğürtlenli Dondurma", price: "30 TL", desc: "Taze böğürtlen aromalı dondurma.", img: "", rating: 4.8 },
+  ],
 };
 
 const categories = Object.keys(menuData).filter(category => menuData[category].length > 0);
