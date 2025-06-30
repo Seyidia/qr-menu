@@ -1,140 +1,388 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Gönül Dağı Et Restaurant Menü</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gönül Dağı Et Restaurant Menü</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --red: #b22222;
+    --red-dark: #800000;
+    --bg-light: #f8f1ea;
+    --bg-dark: #121212;
+    --text-light: #222;
+    --text-dark: #eee;
+  }
+
+  body {
+    margin: 0; 
+    font-family: 'Roboto', sans-serif;
+    background: var(--bg-light);
+    color: var(--text-light);
+    display: flex;
+    min-height: 100vh;
+    overflow-x: hidden;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  /* Karanlık mod */
+  body.dark {
+    background: var(--bg-dark);
+    color: var(--text-dark);
+  }
+
+  /* Sidebar (Kategori Listesi) */
+  .sidebar {
+    position: fixed;
+    left: 0; top: 0; bottom: 0;
+    width: 180px;
+    background-color: var(--red-dark);
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition: background-color 0.3s;
+  }
+
+  body.dark .sidebar {
+    background-color: #4b0000;
+  }
+
+  .sidebar button {
+    background: var(--red);
+    border: none;
+    color: white;
+    padding: 12px 10px;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  .sidebar button:hover,
+  .sidebar button.active {
+    background-color: #f44336;
+  }
+
+  /* Ana içerik */
+  .main-content {
+    flex: 1;
+    margin-left: 180px;
+    padding: 20px 25px;
+    max-width: 900px;
+    transition: color 0.3s;
+  }
+
+  header {
+    margin-bottom: 20px;
+    text-align: center;
+    position: relative;
+  }
+  header h1 {
+    margin: 0;
+    font-weight: 700;
+    font-size: 28px;
+    color: var(--red-dark);
+    transition: color 0.3s;
+  }
+
+  /* Karanlık mod başlık rengi */
+  body.dark header h1 {
+    color: #f08080;
+  }
+
+  /* Karanlık mod butonu */
+  .dark-mode-toggle {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--red);
+    border: none;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  .dark-mode-toggle:hover {
+    background: #f44336;
+  }
+
+  /* Arama kutusu */
+  .search-box {
+    margin-bottom: 25px;
+  }
+  .search-box input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  body.dark .search-box input {
+    background-color: #333;
+    color: var(--text-dark);
+    border-color: #555;
+  }
+
+  /* Ürün kartları düzeni */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(240px,1fr));
+    gap: 20px;
+  }
+
+  .card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgb(0 0 0 / 0.12);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s, background-color 0.3s;
+  }
+  .card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 20px rgb(0 0 0 / 0.18);
+  }
+
+  body.dark .card {
+    background: #222;
+    box-shadow: 0 3px 10px rgba(255 255 255 / 0.1);
+  }
+
+  .card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    background: #eee;
+    transition: background-color 0.3s;
+  }
+
+  body.dark .card img {
+    background: #444;
+  }
+
+  .card-body {
+    padding: 15px 12px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-title {
+    font-weight: 700;
+    font-size: 1.15rem;
+    margin-bottom: 6px;
+    color: var(--red-dark);
+    transition: color 0.3s;
+  }
+
+  body.dark .card-title {
+    color: #f08080;
+  }
+
+  .card-desc {
+    flex: 1;
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 10px;
+    transition: color 0.3s;
+  }
+
+  body.dark .card-desc {
+    color: #ccc;
+  }
+
+  .card-price {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--red);
+    transition: color 0.3s;
+  }
+
+  /* Mobil için düzenleme */
+  @media (max-width: 768px) {
     body {
-      font-family: 'Roboto', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #fefefe;
-      color: #222;
-      line-height: 1.6;
+      flex-direction: column;
+      overflow-x: visible;
     }
-
-    header {
-      background: #800000;
-      color: white;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 1.8rem;
-    }
-
-    .container {
-      max-width: 800px;
-      margin: 20px auto;
-      padding: 0 20px;
-    }
-
-    .search-box {
-      margin-bottom: 20px;
-    }
-
-    .search-box input {
+    .sidebar {
+      position: static;
       width: 100%;
-      padding: 12px;
-      font-size: 16px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
+      flex-direction: row;
+      justify-content: space-around;
+      padding: 12px 0;
+      gap: 10px;
     }
-
-    .category {
-      margin-top: 30px;
+    .sidebar button {
+      flex: 1;
+      font-size: 0.9rem;
+      padding: 10px 6px;
     }
-
-    .category h2 {
-      border-bottom: 2px solid #800000;
-      padding-bottom: 5px;
-      margin-bottom: 15px;
-      color: #800000;
+    .main-content {
+      margin: 0;
+      padding: 10px 15px 30px;
+      max-width: 100%;
     }
-
-    .menu-item {
-      display: flex;
-      justify-content: space-between;
-      padding: 10px 0;
-      border-bottom: 1px solid #eee;
+    .dark-mode-toggle {
+      position: static;
+      margin-bottom: 12px;
+      transform: none;
+      width: 100%;
     }
-
-    .menu-item .name {
-      font-weight: 500;
-    }
-
-    .menu-item .price {
-      color: #555;
-    }
-
-    footer {
-      text-align: center;
-      font-size: 0.9em;
-      color: #aaa;
-      padding: 20px;
-    }
-
-    @media(max-width: 600px) {
-      header h1 {
-        font-size: 1.5rem;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
 
-  <header>
-    <h1>Gönül Dağı Et Restaurant</h1>
-  </header>
+  <nav class="sidebar" id="category-buttons">
+    <!-- Kategori butonları JS ile gelecek -->
+  </nav>
 
-  <div class="container">
+  <div class="main-content">
+    <header>
+      <h1>Gönül Dağı Et Restaurant Menü</h1>
+      <button class="dark-mode-toggle" id="darkToggle">Karanlık Mod</button>
+    </header>
 
     <div class="search-box">
-      <input type="text" id="search" placeholder="Ürün ara...">
+      <input id="search" type="text" placeholder="Ürün ara...">
     </div>
 
-    <div class="category" data-category="kebap">
-      <h2>🥩 Kebaplar</h2>
-      <div class="menu-item"><span class="name">Adana Kebap</span><span class="price">130 TL</span></div>
-      <div class="menu-item"><span class="name">Urfa Kebap</span><span class="price">125 TL</span></div>
-      <div class="menu-item"><span class="name">Karışık Izgara</span><span class="price">190 TL</span></div>
+    <div class="cards" id="cards-container">
+      <!-- Ürün kartları JS ile gelecek -->
     </div>
-
-    <div class="category" data-category="tatlı">
-      <h2>🍮 Tatlılar</h2>
-      <div class="menu-item"><span class="name">Künefe</span><span class="price">50 TL</span></div>
-      <div class="menu-item"><span class="name">Baklava</span><span class="price">45 TL</span></div>
-    </div>
-
-    <div class="category" data-category="icecek">
-      <h2>🥤 İçecekler</h2>
-      <div class="menu-item"><span class="name">Ayran</span><span class="price">15 TL</span></div>
-      <div class="menu-item"><span class="name">Şalgam</span><span class="price">18 TL</span></div>
-      <div class="menu-item"><span class="name">Kola</span><span class="price">20 TL</span></div>
-    </div>
-
   </div>
 
-  <footer>
-    © 2025 Gönül Dağı Et Restaurant
-  </footer>
+<script>
+  // Menü verisi
+  const menuData = {
+    "Et": [
+      {id:1, name:"Adana Kebap", price:"130 TL", desc:"Izgara kıyma, köz biber, lavaş ile servis.", img:""},
+      {id:2, name:"Urfa Kebap", price:"125 TL", desc:"Baharatlı kıyma, lavaş ve yeşillik.", img:""},
+      {id:3, name:"Karışık Izgara", price:"190 TL", desc:"Çeşitli etlerden oluşan karışık tabak.", img:""}
+    ],
+    "Balık": [
+      {id:4, name:"Çupra Izgara", price:"180 TL", desc:"Izgara çupra, limon ve yeşillik eşliğinde.", img:""},
+      {id:5, name:"Levrek Buğulama", price:"170 TL", desc:"Sebzelerle pişirilmiş levrek.", img:""}
+    ],
+    "Alkoller": [
+      {id:6, name:"Kırmızı Şarap", price:"150 TL", desc:"Kaliteli yerli kırmızı şarap.", img:""},
+      {id:7, name:"Beyaz Şarap", price:"145 TL", desc:"Soğuk servis edilen beyaz şarap.", img:""}
+    ],
+    "İçecekler": [
+      {id:8, name:"Kola", price:"20 TL", desc:"Soğuk ve gazlı kola.", img:""},
+      {id:9, name:"Ayran", price:"15 TL", desc:"Ev yapımı ferahlatıcı ayran.", img:""}
+    ],
+    "Tatlılar": [
+      {id:10, name:"Künefe", price:"50 TL", desc:"Sıcak peynirli tatlı.", img:""},
+      {id:11, name:"Baklava", price:"45 TL", desc:"Taze fıstıklı baklava.", img:""}
+    ]
+  };
 
-  <script>
-    const searchInput = document.getElementById("search");
-    searchInput.addEventListener("input", () => {
-      const query = searchInput.value.toLowerCase();
-      const items = document.querySelectorAll(".menu-item");
-      items.forEach(item => {
-        const name = item.querySelector(".name").textContent.toLowerCase();
-        item.style.display = name.includes(query) ? "flex" : "none";
+  const categoryContainer = document.getElementById('category-buttons');
+  const cardsContainer = document.getElementById('cards-container');
+  const searchInput = document.getElementById('search');
+  const darkToggleBtn = document.getElementById('darkToggle');
+
+  // Kategori butonlarını oluştur
+  function createCategoryButtons() {
+    Object.keys(menuData).forEach((cat, i) => {
+      const btn = document.createElement('button');
+      btn.textContent = cat;
+      btn.classList.toggle('active', i === 0);
+      btn.addEventListener('click', () => {
+        setActiveCategory(cat);
       });
+      categoryContainer.appendChild(btn);
     });
-  </script>
+  }
+
+  // Aktif kategori ve ürünleri göster
+  function setActiveCategory(category) {
+    [...categoryContainer.children].forEach(btn => {
+      btn.classList.toggle('active', btn.textContent === category);
+    });
+    renderProducts(category);
+  }
+
+  // Ürünleri renderla (arama filtresi varsa uygula)
+  function renderProducts(category) {
+    const query = searchInput.value.trim().toLowerCase();
+    cardsContainer.innerHTML = '';
+
+    menuData[category].forEach(product => {
+      if (!product.name.toLowerCase().includes(query)) return;
+
+      const card = document.createElement('div');
+      card.className = 'card';
+
+      const img = document.createElement('img');
+      img.alt = product.name;
+      img.src = product.img || 'https://via.placeholder.com/300x160?text=Resim+Yok';
+
+      const body = document.createElement('div');
+      body.className = 'card-body';
+
+      const title = document.createElement('div');
+      title.className = 'card-title';
+      title.textContent = product.name;
+
+      const desc = document.createElement('div');
+      desc.className = 'card-desc';
+      desc.textContent = product.desc;
+
+      const price = document.createElement('div');
+      price.className = 'card-price';
+      price.textContent = product.price;
+
+      body.appendChild(title);
+      body.appendChild(desc);
+      body.appendChild(price);
+
+      card.appendChild(img);
+      card.appendChild(body);
+
+      cardsContainer.appendChild(card);
+    });
+  }
+
+  // Arama inputu dinle
+  searchInput.addEventListener('input', () => {
+    const activeBtn = [...categoryContainer.children].find(btn => btn.classList.contains('active'));
+    if (activeBtn) renderProducts(activeBtn.textContent);
+  });
+
+  // Karanlık mod toggle
+  darkToggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    if(document.body.classList.contains('dark')){
+      darkToggleBtn.textContent = "Aydınlık Mod";
+      localStorage.setItem('darkMode', 'enabled');
+    } else {
+      darkToggleBtn.textContent = "Karanlık Mod";
+      localStorage.setItem('darkMode', 'disabled');
+    }
+  });
+
+  // Sayfa yüklendiğinde karanlık mod tercihini uygula
+  window.addEventListener('load', () => {
+    if(localStorage.getItem('darkMode') === 'enabled'){
+      document.body.classList.add('dark');
+      darkToggleBtn.textContent = "Aydınlık Mod";
+    }
+  });
+
+  // Başlangıçta ilk kategoriyi göster
+  createCategoryButtons();
+  setActiveCategory(Object.keys(menuData)[0]);
+</script>
 
 </body>
 </html>
