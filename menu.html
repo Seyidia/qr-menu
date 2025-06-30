@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gönül Dağı Et Restaurant Menü</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fefefe;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #800000;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+
+    .search-box {
+      margin-bottom: 20px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+
+    .category {
+      margin-top: 30px;
+    }
+
+    .category h2 {
+      border-bottom: 2px solid #800000;
+      padding-bottom: 5px;
+      margin-bottom: 15px;
+      color: #800000;
+    }
+
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .menu-item .name {
+      font-weight: 500;
+    }
+
+    .menu-item .price {
+      color: #555;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9em;
+      color: #aaa;
+      padding: 20px;
+    }
+
+    @media(max-width: 600px) {
+      header h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Gönül Dağı Et Restaurant</h1>
+  </header>
+
+  <div class="container">
+
+    <div class="search-box">
+      <input type="text" id="search" placeholder="Ürün ara...">
+    </div>
+
+    <div class="category" data-category="kebap">
+      <h2>🥩 Kebaplar</h2>
+      <div class="menu-item"><span class="name">Adana Kebap</span><span class="price">130 TL</span></div>
+      <div class="menu-item"><span class="name">Urfa Kebap</span><span class="price">125 TL</span></div>
+      <div class="menu-item"><span class="name">Karışık Izgara</span><span class="price">190 TL</span></div>
+    </div>
+
+    <div class="category" data-category="tatlı">
+      <h2>🍮 Tatlılar</h2>
+      <div class="menu-item"><span class="name">Künefe</span><span class="price">50 TL</span></div>
+      <div class="menu-item"><span class="name">Baklava</span><span class="price">45 TL</span></div>
+    </div>
+
+    <div class="category" data-category="icecek">
+      <h2>🥤 İçecekler</h2>
+      <div class="menu-item"><span class="name">Ayran</span><span class="price">15 TL</span></div>
+      <div class="menu-item"><span class="name">Şalgam</span><span class="price">18 TL</span></div>
+      <div class="menu-item"><span class="name">Kola</span><span class="price">20 TL</span></div>
+    </div>
+
+  </div>
+
+  <footer>
+    © 2025 Gönül Dağı Et Restaurant
+  </footer>
+
+  <script>
+    const searchInput = document.getElementById("search");
+    searchInput.addEventListener("input", () => {
+      const query = searchInput.value.toLowerCase();
+      const items = document.querySelectorAll(".menu-item");
+      items.forEach(item => {
+        const name = item.querySelector(".name").textContent.toLowerCase();
+        item.style.display = name.includes(query) ? "flex" : "none";
+      });
+    });
+  </script>
+
+</body>
+</html>
