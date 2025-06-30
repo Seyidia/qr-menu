@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Search, Moon, Sun, ChefHat, Star, Heart, ShoppingCart } from 'lucide-react';
+import { Search, Moon, Sun, ChefHat, Star, Heart, ShoppingCart, IceCream, } from 'lucide-react';
 
 const menuData = {
   Kuzu: [
@@ -234,6 +234,7 @@ export default function RestaurantMenu() {
                   "{searchTerm}" araması için sonuç bulunamadı.
                 </p>
               </div>
+<IceCream className="w-8 h-8 text-red-600" />
             )}
           </main>
         </div>
