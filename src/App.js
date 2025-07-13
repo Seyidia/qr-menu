@@ -45,19 +45,7 @@ const menuData = {
     { id: 26, name: "Elmalı Maden Suyu", price: "60 TL" },
     { id: 27, name: "Limonlu Maden Suyu", price: "60 TL" },
     { id: 28, name: "Sade Maden Suyu", price: "50 TL" },
-<<<<<<< HEAD
     { id: 29, name: "Karpuz & Çilek Maden Suyu", price: "60 TL" },
-    { id: 31, name: "Niğde Gazozu", price: "60 TL" },
-    { id: 32, name: "Coca Cola", price: "70 TL" },
-    { id: 33, name: "Ayran", price: "50 TL" },
-    { id: 34, name: "Limonata", price: "50 TL" },
-    { id: 35, name: "Acılı Şalgam", price: "50 TL" },
-    { id: 36, name: "Mango Ice Tea", price: "70 TL" },
-    { id: 37, name: "Ananas Ice Tea", price: "70 TL" },
-    { id: 38, name: "Şeftalili Ice Tea", price: "70 TL" },
-    { id: 39, name: "Fanta", price: "70 TL" },
-=======
-    { id: 29, name: "Karpuz % Çilek Maden Suyu", price: "60 TL" },
     { id: 30, name: "Niğde Gazozu", price: "60 TL" },
     { id: 31, name: "Coca Cola", price: "70 TL" },
     { id: 32, name: "Ayran", price: "50 TL" },
@@ -67,7 +55,6 @@ const menuData = {
     { id: 36, name: "Ananas Ice Tea", price: "70 TL" },
     { id: 37, name: "Şeftalili Ice Tea", price: "70 TL" },
     { id: 38, name: "Fanta", price: "70 TL" },
->>>>>>> 1ff15baf7adf859b7929bb3a9386566768201042
   ],
 };
 
