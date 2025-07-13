@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Search, Moon, Sun, ChefHat, Star, Heart, ShoppingCart, IceCream, } from 'lucide-react';
+import React, { useState } from 'react';
+import { Search, Moon, Sun, ChefHat } from 'lucide-react';
 
 const menuData = {
   Kuzu: [
