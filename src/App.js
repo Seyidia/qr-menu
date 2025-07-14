@@ -56,6 +56,10 @@ const menuData = {
     { id: 37, name: "Şeftalili Ice Tea", price: "70 TL" },
     { id: 38, name: "Fanta", price: "70 TL" },
   ],
+  "Çocuk Menüsü": [
+    { id: 39, name: "", price: "", popular: true },
+    { id: 40, name: "", price: "" },
+  ],
 };
 
 const categories = Object.keys(menuData).filter(category => menuData[category].length > 0);
