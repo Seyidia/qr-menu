@@ -20,9 +20,9 @@ const menuData = {
     { id: 13, name: "Dana böbrek", price: "350 TL" },
   ],
   Tavuk: [
-    { id: 14, name: "Tavuk kanat", price: "90 TL" },
-    { id: 15, name: "Tavuk şiş", price: "95 TL", popular: true },
-    { id: 16, name: "Tavuk ızgara karışık", price: "110 TL" },
+    { id: 14, name: "Tavuk kanat", price: "380 TL" },
+    { id: 15, name: "Tavuk şiş", price: "350 TL", popular: true },
+    { id: 16, name: "Tavuk ızgara karışık", price: "700 TL" },
   ],
   Adana: [
     { id: 17, name: "Adana porsiyon", price: "550 TL", popular: true },
@@ -40,6 +40,9 @@ const menuData = {
     { id: 23, name: "Haydari", price: "100 TL" },
     { id: 24, name: "Acılı ezme", price: "100 TL", popular: true },
     { id: 25, name: "Havuç tarator", price: "100 TL" },
+        { id: 40, name: "Şakşuka", price: "100 TL" },
+    { id: 41, name: "Semiz Otu", price: "100 TL",  },
+    { id: 42, name: "Pancar Turşusu", price: "100 TL" },
   ],
   İçecekler: [
     { id: 26, name: "Elmalı Maden Suyu", price: "60 TL" },
@@ -55,10 +58,10 @@ const menuData = {
     { id: 36, name: "Ananas Ice Tea", price: "70 TL" },
     { id: 37, name: "Şeftalili Ice Tea", price: "70 TL" },
     { id: 38, name: "Fanta", price: "70 TL" },
+    { id: 40, name: "RedBull", price: "130 TL" }, 
   ],
   "Çocuk Menüsü": [
-    { id: 39, name: "", price: "", popular: true },
-    { id: 40, name: "", price: "" },
+    { id: 39, name: "Çocuk Menüsü", price: "300", popular: true },
   ],
 };
 
