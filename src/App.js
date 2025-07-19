@@ -18,8 +18,10 @@ const menuData = {
     { id: 5, name: "Dana şiş", price: "650 TL" },
     { id: 6, name: "Ciğer şiş", price: "450 TL" },
     { id: 7, name: "Dana böbrek", price: "350 TL" },
-    { id: 8, name: "Gönül Dağı Çöpşiş(200gr)", price: "600 TL", description: "Özel baharatlarla marine edilmiş dana çöpşiş." },
-    { id: 9, name: "Gönül Dağı Special", price: "2850", description: "Adana, Urfa, Kuzu Külbastı, Gönül Dağ Çöpşiş, Antrikot. Yanında Bulgur Pilavı, Sumaklı Soğan, Köz Biber & Domates ve Lahana Turşusu." },
+  ],
+  "Gönül Dağı Special": [
+    { id: 1, name: "Gönül Dağı Çöpşiş(200gr)", price: "600 TL", description: "Özel baharatlarla marine edilmiş dana çöpşiş." },
+    { id: 2, name: "Gönül Dağı Special", price: "2850", description: "Adana, Urfa, Kuzu Külbastı, Gönül Dağ Çöpşiş, Antrikot. Yanında Bulgur Pilavı, Sumaklı Soğan, Köz Biber & Domates ve Lahana Turşusu." },
   ],
   Tavuk: [
     { id: 14, name: "Tavuk kanat", price: "380 TL" },
@@ -31,12 +33,13 @@ const menuData = {
     { id: 18, name: "Adana dürüm", price: "250 TL" },
   ],
   Salata: [
-    { id: 19, name: "Karışık salata", price: "30 TL" },
-    { id: 20, name: "Sezar salata", price: "40 TL" },
+    { id: 1, name: "Mevsim Salata", price: "150 TL" },
+    { id: 2, name: "Kaşık Salata", price: "150 TL" },
+    { id: 3, name: "Çoban Salata", price: "200 TL" },
   ],
   Tatlılar: [
-    { id: 21, name: "Kabak tatlısı", price: "40 TL" },
-    { id: 22, name: "Şambali", price: "30 TL" },
+    { id: 21, name: "Kabak tatlısı", price: "150 TL" },
+    { id: 22, name: "Şambali", price: "150 TL" },
   ],
   Mezeler: [
     { id: 23, name: "Haydari", price: "100 TL" },
@@ -63,6 +66,10 @@ const menuData = {
   ],
   "Çocuk Menüsü": [
     { id: 39, name: "Çocuk Menüsü", price: "300", popular: true },
+  ],
+  "Meyveler": [
+    { id: 1, name: "Meyve Tabağı", price: "200 TL", description: "2 kişilik" },
+    { id: 2, name: "Double Meyve Tabağı", price: "400 TL", description: "4 kişilik" },
   ],
 };
 
