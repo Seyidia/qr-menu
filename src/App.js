@@ -18,7 +18,7 @@ const menuData = {
     { id: 5, name: "Dana şiş", price: "650 TL" },
     { id: 6, name: "Ciğer şiş", price: "450 TL" },
     { id: 7, name: "Dana böbrek", price: "350 TL" },
-    { id: 8, name: "Gönül Dağı Çöpşiş(200gr)", price: "600 TL", },
+    { id: 8, name: "Gönül Dağı Çöpşiş(200gr)", price: "600 TL", description: "Özel baharatlarla marine edilmiş dana çöpşiş." },
     { id: 9, name: "Gönül Dağı Special", price: "2850", description: "Adana, Urfa, Kuzu Külbastı, Gönül Dağ Çöpşiş, Antrikot. Yanında Bulgur Pilavı, Sumaklı Soğan, Köz Biber & Domates ve Lahana Turşusu." },
   ],
   Tavuk: [
@@ -43,7 +43,6 @@ const menuData = {
     { id: 24, name: "Acılı ezme", price: "100 TL", popular: true },
     { id: 25, name: "Havuç tarator", price: "100 TL" },
     { id: 40, name: "Şakşuka", price: "100 TL" },
-    { id: 41, name: "Semiz Otu", price: "100 TL",  },
     { id: 42, name: "Pancar Turşusu", price: "100 TL" },
   ],
   İçecekler: [
