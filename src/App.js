@@ -11,14 +11,15 @@ const menuData = {
     { id: 6, name: "Kuzu böbrek", price: "500 TL" },
   ],
   Dana: [
-    { id: 1, name: "Dana kavurma", price: "500 TL" },
+    { id: 1, name: "Dana kavurma", price: "500 TL", description: "Yumuşak dana etiyle hazırlanan özel kavurma." },
     { id: 2, name: "Dana antrikot", price: "700 TL", popular: true },
     { id: 3, name: "Dana biftek", price: "500 TL" },
     { id: 4, name: "Dana lokum", price: "800 TL" },
     { id: 5, name: "Dana şiş", price: "650 TL" },
     { id: 6, name: "Ciğer şiş", price: "450 TL" },
     { id: 7, name: "Dana böbrek", price: "350 TL" },
-    { id: 8, name: "Gönül Dağı Çöpşiş(200gr)", price: "600 TL" },
+    { id: 8, name: "Gönül Dağı Çöpşiş(200gr)", price: "600 TL", description: "Özel baharatlarla marine edilmiş dana çöpşiş." },
+    { id: 9, name: "Gönül Dağı Special", price: "2850", description: "Adana, Urfa, Kuzu Külbastı, Gönül Dağ Çöpşiş, Antrikot. Yanında Bulgur Pilavı, Sumaklı Soğan, Köz Biber & Domates ve Lahana Turşusu." },
   ],
   Tavuk: [
     { id: 14, name: "Tavuk kanat", price: "380 TL" },
@@ -239,6 +240,9 @@ export default function RestaurantMenu() {
                         <h3 className="text-xl font-bold text-red-600">  {/* Kırmızı başlık */}
                           {item.name}
                         </h3>
+                        {item.description && (
+                          <p className="text-sm text-gray-500 mt-1">{item.description}</p>
+                        )}
                       </div>
                       
                       <div className="flex items-center justify-between">
