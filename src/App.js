@@ -18,6 +18,7 @@ const menuData = {
     { id: 5, name: "Dana şiş", price: "600 TL" },
     { id: 6, name: "Ciğer şiş", price: "450 TL" },
     { id: 7, name: "Dana böbrek", price: "350 TL" },
+    { id: 8, name: "Porsiyon köfte", price: "450 TL" },
   ],
   "Gönül Dağı Special": [
     { id: 1, name: "Gönül Dağı Çöpşiş(200gr)", price: "600 TL", description: "Özel baharatlarla marine edilmiş dana çöpşiş." },
