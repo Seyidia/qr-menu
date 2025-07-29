@@ -3,19 +3,19 @@ import { Search, Moon, Sun, ChefHat } from 'lucide-react';
 
 const menuData = {
   Kuzu: [
-    { id: 1, name: "Kuzu beyti", price: "750 TL", popular: true },
-    { id: 2, name: "Kuzu pirzola", price: "750 TL", popular: true },
-    { id: 3, name: "Kuzu kaburga", price: "600 TL" },
-    { id: 4, name: "Kuzu külbastı", price: "700 TL" },
-    { id: 5, name: "Kuzu kavurma", price: "700 TL" },
+    { id: 1, name: "Kuzu beyti", price: "650 TL", popular: true },
+    { id: 2, name: "Kuzu pirzola", price: "650 TL", popular: true },
+    { id: 3, name: "Kuzu kaburga", price: "550 TL" },
+    { id: 4, name: "Kuzu külbastı", price: "650 TL" },
+    { id: 5, name: "Kuzu kavurma", price: "650 TL" },
     { id: 6, name: "Kuzu böbrek", price: "500 TL" },
   ],
   Dana: [
     { id: 1, name: "Dana kavurma", price: "500 TL", description: "Yumuşak dana etiyle hazırlanan özel kavurma." },
-    { id: 2, name: "Dana antrikot", price: "700 TL", popular: true },
-    { id: 3, name: "Dana biftek", price: "500 TL" },
-    { id: 4, name: "Dana lokum", price: "800 TL" },
-    { id: 5, name: "Dana şiş", price: "650 TL" },
+    { id: 2, name: "Dana antrikot", price: "600 TL", popular: true },
+    { id: 3, name: "Dana biftek", price: "550 TL" },
+    { id: 4, name: "Dana lokum", price: "700 TL" },
+    { id: 5, name: "Dana şiş", price: "600 TL" },
     { id: 6, name: "Ciğer şiş", price: "450 TL" },
     { id: 7, name: "Dana böbrek", price: "350 TL" },
   ],
@@ -29,8 +29,7 @@ const menuData = {
     { id: 16, name: "Tavuk ızgara karışık", price: "700 TL" },
   ],
   Adana: [
-    { id: 17, name: "Adana porsiyon", price: "550 TL", popular: true },
-    { id: 18, name: "Adana dürüm", price: "250 TL" },
+    { id: 17, name: "Adana porsiyon", price: "500 TL", popular: true },
   ],
   Salata: [
     { id: 1, name: "Mevsim Salata", price: "150 TL" },
@@ -63,6 +62,7 @@ const menuData = {
     { id: 37, name: "Şeftalili Ice Tea", price: "70 TL" },
     { id: 38, name: "Fanta", price: "70 TL" },
     { id: 43, name: "RedBull", price: "130 TL" }, 
+    { id: 44, name: "Frutti Extra", price: "85 TL" },
   ],
   "Çocuk Menüsü": [
     { id: 39, name: "Çocuk Menüsü", price: "300", popular: true },
